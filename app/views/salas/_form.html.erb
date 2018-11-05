@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@sala) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nome_sala %>
+    <%= f.input :descricao %>
+    <%= f.input :capacidade %>
+    <%= f.input :turma_de %>
+    <%= f.input :turma_ate %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', salas_url , class: 'btn btn-secondary' %>
+    <%= link_to 'Excluir', sala, method: :delete, data: { confirm: 'Você confirma a exclusão da sala?' }, class: 'btn btn-danger' if params[:id].present? %>
+  </div>
+<% end %>

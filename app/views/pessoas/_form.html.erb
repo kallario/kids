@@ -1,0 +1,7 @@
+<%= simple_form_for(@pessoa, html: { class: 'form-vertical' }) do |f| %>
+  <%= f.hidden :grupo, @grupo %>
+  <%= f.input :familia %>
+  <%= f.input :telefone %>
+  <%= f.input :codigo %>
+  <%= f.submit 'Adicionar Família' %>
+<% end %>

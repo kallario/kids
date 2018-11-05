@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">  
+  <h1 class="h2">Turmas</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <button class="btn btn-sm btn-outline-secondary">Share</button>
+      <button class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar"></span>
+      This week
+    </button>
+  </div>
+</div>
+
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Adicionar Turma +', new_turma_path, class: 'btn btn-primary btn-block' %>
+
+
+<br>
+
+
+<table class='table table-bordered'>
+
+  <tbody>
+    <% @turmas.each do |turma| %>
+      <tr>
+          <td><h5><%= link_to turma.nome_turma, edit_turma_path(turma) %><br><spam class='tile-crianca'>De <%= turma.idade_inicial %> a <%= turma.idade_final %> ano(s)</spam></h5></td>
+          <td width='10px'>
+            <%= link_to 'Alunos', alunos_path(turma), class: 'btn btn-success btn-sm' %>
+          </td>             
+      </tr>
+    <% end %>
+  </tbody>
+</table>

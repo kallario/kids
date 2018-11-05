@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">  
+  <h1 class="h2">Salas</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <button class="btn btn-sm btn-outline-secondary">Share</button>
+      <button class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar"></span>
+      This week
+    </button>
+  </div>
+</div>
+
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Adicionar Sala +', new_sala_path, class: 'btn btn-primary btn-block' %>
+
+
+<br>
+
+
+<table class='table table-bordered'>
+
+  <tbody>
+    <% @salas.each do |sala| %>
+      <tr>
+          <td><h5><%= link_to sala.nome_sala, edit_sala_path(sala) %><br><spam class='tile-crianca'>Capacidade: <%= sala.capacidade %></spam></h5></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

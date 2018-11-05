@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">  
+  <h1 class="h2">Histórico de Atividades</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <%= link_to 'Exportar', historico_path(format: :csv), class: "btn btn-sm btn-outline-secondary" %>
+    </div>
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+      Ações
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <%= link_to 'Diário', historico_path(frequencia: 1), class: 'dropdown-item' %>
+      <%= link_to 'Semanal', historico_path(frequencia: 2), class: 'dropdown-item' %>
+      <%= link_to 'Mensal', historico_path(frequencia: 3), class: 'dropdown-item' %>
+    </div>    
+  </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<h5>Aluno: <%= @pessoa.nome_completo %></h5>
+
+<table class='table table-bordered table-striped'>
+  <thead>
+    <tr>
+      <th>Data do Evento</th>
+      <th>Tipo de Evento</th>
+      <th>Responsável</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eventos.each do |evento| %>
+      <tr>
+        <td><%= evento.data_evento.strftime('%d/%m/%Y %H:%M') %></td>
+        <td><%= evento.tipo_evento_string %></td>
+        <td><%= evento.nome_responsavel %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+

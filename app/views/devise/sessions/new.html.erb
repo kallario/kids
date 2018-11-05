@@ -1,0 +1,11 @@
+<div class="meu-form">
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin'}) do |f| %>
+      <center><%= image_tag("logo.svg", size: "300x175") %></center>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <%= f.input :email, required: false, autofocus: true, autocomplete: false %>
+      <label for="inputPassword" class="sr-only">Senha</label>
+      <%= f.input :password, required: false %>
+      <%= f.button :submit, "Entrar no Sistema", class: 'btn btn-lg btn-primary btn-block' %>
+      <p class="mt-5 mb-3 text-muted">Kalla Rio &copy; 2017-2018</p>
+<% end %>
+</div>

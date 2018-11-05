@@ -1,0 +1,53 @@
+
+<% if @pessoas.where(grupo: 3, checkin: true).count > 0 then %>
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">  
+    <h1 class="h2">Checkout</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <button class="btn btn-sm btn-outline-secondary">Share</button>
+        <button class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+      <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        <span data-feather="calendar"></span>
+        This week
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1">
+      <%= form_tag processar_checkin_path, method: :get do %>
+        <%= hidden_field_tag :data, Time.now() %>
+        <%= hidden_field_tag :tipo,  2 %>
+
+        <h5>Crianças</h5>
+        
+        <% @pessoas.criancas.where(checkin: true).each do |f| %>
+      	  <%= check_box_tag("pessoa_ids[]", f.id) %>
+      	  <%= label_tag(:pessoa_id, f.primeiro_nome) %>
+      	  <br>
+        <% end %>
+
+        <h5>Responsável</h5>
+
+        <% @pessoas.responsaveis.each do |f| %>
+      	  <%= radio_button_tag(:responsavel_id, f.id) %>
+      	  <%= label_tag(:responsavel_id, f.primeiro_nome) %>
+      	  <br>
+        <% end %>  
+
+        <br>
+        <%= submit_tag 'Fazer o Checkout', class: 'btn btn-primary' %>
+        <%= link_to 'Voltar', pessoas_path, class: 'btn btn-secondary' %>
+      <% end %>
+    </div>
+  </div>
+
+<% else %>
+
+  <h3>Não existem crianças nessa família para fazer o Checkout</h3>
+  <p>Existem <%= Pessoa.where(familia_id: params[:pessoa_id], checkin: false, grupo: 3).count %> crianças que podem fazer checkin.</p>
+  <%= link_to 'Você deseja fazer o checkin agora?', checkin_path, class: 'btn btn-success' %>
+
+<% end %>

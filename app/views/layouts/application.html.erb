@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kids</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">KIDS CHECKIN</a>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <%= link_to '<span data-feather="file"></span> Dashboard'.html_safe, root_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '<span data-feather="file"></span> Pessoas'.html_safe, pessoas_path, class: 'nav-link' %>
+              </li>
+
+
+              <li class="nav-item">
+                <%= link_to '<span data-feather="file"></span> Quiosque'.html_safe, pessoas_path, class: 'nav-link' if Configuracao.where(id: 1, quiosque: true).present? %>
+              </li> 
+
+              <li class="nav-item">
+                <%= link_to '<span data-feather="file"></span> Turmas'.html_safe, turmas_path, class: 'nav-link' if Configuracao.where(id: 1, turmas: true).present? %>
+              </li>              
+
+              <li class="nav-item">
+                <%= link_to '<span data-feather="file"></span> Salas'.html_safe, salas_path, class: 'nav-link' if Configuracao.where(id: 1, salas: true).present? %>
+              </li> 
+
+              <li class="nav-item">
+                <%= link_to '<span data-feather="file"></span> Configurações'.html_safe, configuracoes_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="users"></span>
+                  Minha Conta
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Ajuda
+                </a>
+              </li>
+              <li class="nav-item">
+                <%= link_to('Sair do Sistema', destroy_usuario_session_path, method: :delete, class: 'nav-link') %> 
+              </li>                           
+            </ul>
+          </div>
+        </nav>    
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+          <%= yield %>
+
+        </main>
+
+
+      </div>
+    </div>
+  </body>
+</html>

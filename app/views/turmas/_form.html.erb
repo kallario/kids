@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@turma) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nome_turma %>
+    <%= f.input :descricao %>
+    <%= f.input :idade_inicial %>
+    <%= f.input :idade_final %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', turmas_url , class: 'btn btn-secondary' %>
+    <%= link_to 'Excluir', turma, method: :delete, data: { confirm: 'Você confirma a exclusão da turma?' }, class: 'btn btn-danger float-right' if params[:id].present? %>
+  </div>
+<% end %>

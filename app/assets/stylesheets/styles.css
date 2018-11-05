@@ -1,0 +1,103 @@
+#nav li:hover ul {
+    display: block;
+    right: 0;
+}
+
+#nav ul {
+    display: none;
+}
+#nav ul li {
+    margin-right: 0;
+}
+
+.tile-number {
+	font-size: 72px;
+	color: #fff;
+}
+
+.tile-description {
+	font-size: 24px;
+	color: #fff;	
+}
+
+.tile-responsavel {
+	font-size: 12px;
+	background-color: #bbb;
+	color: #fff;	
+	padding: 5px;
+}
+
+.tile-crianca {
+	font-size: 12px;
+	color: #bbb;	
+	padding: 5px;
+}
+
+.tile-checkin-titulo {
+    font-size: 18px;
+    color: #fff;    
+    padding: 5px;
+}
+
+.tile-checkin-texto {
+    font-size: 14px;
+    color: #fff;    
+    padding: 5px;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #0065bb !important;
+    border-color: #0065bb;
+    color: #fff !important;
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+    background-color: #ccc !important;
+    border-color: #ccc;
+    color: #666 !important;
+}
+
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:visited {
+    background-color: #1d487a !important;
+    border-color: #1d487a;
+    color: #fff !important;
+}
+
+.bg-kids {
+    background-color: #8771bb !important;
+    border-color: #8771bb;
+    color: #fff !important;
+}
+
+.bg-family {
+    background-color: #ff9800 !important;
+    border-color: #ff9800;
+    color: #fff !important;
+}
+
+.btn-bars, .btn-bars:hover, .btn-bars:active, .btn-bars:visited {
+    background-color: #e47400 !important;
+    border-color: #e47400;
+    color: #fff !important;
+}
+
+a {
+    color: #000 ;
+}
+a:visited {
+    color: #000;
+}
+a:hover {
+    color: #666;
+    text-decoration: none;
+}
+a:focus {
+    color: #000;
+}
+a:active {
+    color: #000;
+}
+
+.text-success {
+    color: #fff !important;
+}

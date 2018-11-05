@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">  
+  <h1 class="h2">Dashboard</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <button class="btn btn-sm btn-outline-secondary">Share</button>
+      <button class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar"></span>
+      This week
+    </button>
+  </div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+		<div class="card card-tile card-xs bg-success bg-gradient text-center">
+			<div class="card-body p-4">
+				<!-- Accepts .invisible: Makes the items. Use this only when you want to have an animation called on it later -->
+		        <div class="tile-left">
+		          <%= fa_icon "users 4x", class: "text-success pull-left" %>
+		        </div>
+				<div class="tile-right">
+					<div class="tile-number"><%= Pessoa.where('grupo > 1').count %></div>
+					<div class="tile-description">Total de Pessoas</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+		<div class="card card-tile card-xs bg-family bg-gradient text-center">
+			<div class="card-body p-4">
+		        <div class="tile-left">
+		          <%= fa_icon "address-card 4x", class: "text-success pull-left" %>
+		        </div>
+				<div class="tile-right">
+					<div class="tile-number"><%= Pessoa.where(grupo: 1).count %></div>
+					<div class="tile-description">Famílias</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+		<div class="card card-tile card-xs bg-primary bg-gradient text-center">
+			<div class="card-body p-4">
+		        <div class="tile-left">
+		          <%= fa_icon "user 4x", class: "text-success pull-left" %>
+		        </div>
+				<div class="tile-right">
+					<div class="tile-number"><%= Pessoa.where(grupo: 2).count %></div>
+					<div class="tile-description">Responsáveis</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+		<div class="card card-tile card-xs bg-kids bg-gradient text-center">
+			<div class="card-body p-4">
+		        <div class="tile-left">
+		          <%= fa_icon "user 4x", class: "text-success pull-left" %>
+		        </div>
+				<div class="tile-right">
+					<div class="tile-number"><%= Pessoa.where(grupo: 3).count %></div>
+					<div class="tile-description">Crianças</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- if Configuracao.where(id: 1, salas: true).present? %>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">  
+  <h1 class="h2">Salas</h1>
+</div>
+
+<% @salas.each do |sala| %>
+<spam class="tile-crianca"><%= sala.nome_sala %> (<%= Pessoa.where(sala_id: sala.id, checkin: true).count %> de <%= sala.capacidade %> vagas)</spam><br>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: <%= Pessoa.where(sala_id: sala.id, checkin: true).count * 100 / sala.capacidade %>%" aria-valuenow="<%= Pessoa.where(sala_id: sala.id, checkin: true).count %>" aria-valuemin="0" aria-valuemax="<%= sala.capacidade %>"></div>
+</div>
+<br>
+<% end %>
+
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome_sala: MyString
+  descricao: MyString
+  capacidade: 1
+  turma_de: 1
+  turma_ate: 1
+
+two:
+  nome_sala: MyString
+  descricao: MyString
+  capacidade: 1
+  turma_de: 1
+  turma_ate: 1

@@ -1,0 +1,27 @@
+<div class="row">
+<div class="col-md-8 col-md-offset-1">
+<%= simple_form_for(@pessoa, html: { class: 'form-vertical' }) do |f| %>
+  <%= f.input :grupo, as: :hidden, input_html: { value: "2" } %>
+  <%= f.input :familia_id, as: :hidden, input_html: { value: @familia.id } %>
+  <div class="row">
+  <div class="col-md-6">
+  <%= f.input :primeiro_nome, required: true %>
+  </div>
+  <div class="col-md-6">
+  <%= f.input :familia, input_html: { value: @familia.familia }, disabled: true %>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+  <%= f.input :email %>
+  </div>
+  <div class="col-md-6">
+  <%= f.input :celular, required: true %>
+  </div>
+  </div>
+  <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+  <%= link_to 'Voltar', pessoas_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Excluir', pessoa, method: :delete, data: { confirm: 'Você confirma a exclusão?' }, class: 'btn btn-danger float-right' if params[:pessoa_id].present? %>  
+<% end %>
+</div>
+</div>

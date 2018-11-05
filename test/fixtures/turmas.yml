@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome_turma: MyString
+  descricao: MyString
+  idade_inicial: 1
+  idade_final: 1
+
+two:
+  nome_turma: MyString
+  descricao: MyString
+  idade_inicial: 1
+  idade_final: 1

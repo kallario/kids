@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pessoa: one
+  responsavel: one
+  data_evento: 2018-05-31 12:52:35
+  tipo_evento: 1
+
+two:
+  pessoa: two
+  responsavel: two
+  data_evento: 2018-05-31 12:52:35
+  tipo_evento: 1

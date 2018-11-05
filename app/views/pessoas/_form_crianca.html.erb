@@ -1,0 +1,42 @@
+<div class="row">
+<div class="col-md-8 col-md-offset-1">
+<%= simple_form_for(@pessoa, html: { class: 'form-vertical' }) do |f| %>
+  <%= f.input :grupo, as: :hidden, input_html: { value: "3" } %>
+  <%= f.input :familia_id, as: :hidden, input_html: { value: @familia.id } %>
+  <div class='row'>
+  <div class='col-md-6'>  
+  <%= f.input :primeiro_nome %>
+  </div>
+  <div class='col-md-6'>  
+  <%= f.input :familia, input_html: { value: @familia.familia }, disabled: true %>
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-4'>
+  <%= f.input :sexo, priority: [ "Masculino" ], collection: [ "Masculino", "Feminino"] %>
+  </div>    
+  <div class='col-md-8'>
+  <%= f.input :nascimento, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year, 
+                              order: [:day, :month, :year] %>
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-6'>
+  <%= f.association :turma, label_method: :nome_turma, value_method: :id, include_blank: true if Configuracao.where(id: 1, turmas: true).present? %>
+  </div>
+  <div class='col-md-6'>
+  <%= f.association :sala, label_method: :nome_sala, value_method: :id, include_blank: true if Configuracao.where(id: 1, salas: true).present? %>
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-12'>    
+  <%= f.input :observacoes, label: 'Alergias / Notas', as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } } %>
+  </div>
+  </div>
+  <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+  <%= link_to 'Voltar', pessoas_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Excluir', pessoa, method: :delete, data: { confirm: 'Você confirma a exclusão?' }, class: 'btn btn-danger float-right' if params[:pessoa_id].present? %>  
+<% end %>
+</div>
+</div>

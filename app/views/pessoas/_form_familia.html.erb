@@ -1,0 +1,52 @@
+<div class="row">
+<div class="col-md-8 col-md-offset-1">
+<%= simple_form_for(@pessoa, html: { class: 'form-vertical' }) do |f| %>
+  <%= f.input :grupo, as: :hidden, input_html: { value: "1" } %>
+  <%= f.input :familia_id, as: :hidden  %>
+  <div class='row'>
+  <div class='col-md-9'>
+  <%= f.input :familia %>
+  </div>
+  <div class='col-md-3'>
+  <%= f.input :telefone %>
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-7'>  
+  <%= f.input :email %>
+  </div>
+  <div class='col-md-3'>  
+  <%= f.input :password %>
+  </div>
+  <div class='col-md-2'>
+  <%= f.input :cep %>
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-6'>
+  <%= f.input :endereco %>
+  </div>
+  <div class='col-md-2'>
+  <%= f.input :numero %>
+  </div>
+  <div class='col-md-4'>
+  <%= f.input :complemento %>
+  </div>
+  </div>
+  <div class='row'>
+  <div class='col-md-4'>
+  <%= f.input :bairro %>
+  </div>
+  <div class='col-md-6'>
+  <%= f.input :cidade %>
+  </div>
+  <div class='col-md-2'>
+  <%= f.input :estado %>
+  </div>
+  </div>
+  <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+  <%= link_to 'Voltar', pessoas_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Excluir', pessoa, method: :delete, data: { confirm: 'Você confirma a exclusão?' }, class: 'btn btn-danger float-right' if params[:pessoa_id].present? %> 
+<% end %>
+</div>
+</div>

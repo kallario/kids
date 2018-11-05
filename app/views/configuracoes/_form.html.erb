@@ -1,0 +1,20 @@
+
+<%= simple_form_for(@configuracao) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nome_empresa %>
+    <%= f.input :quiosque %>
+    <%= f.input :turmas %>
+    <%= f.input :salas %>
+    <%= f.input :usar_impressora %>
+    <%= f.input :nome_impressora %>
+    <%= f.input :layout_etiqueta %>
+    <%= f.input :usar_fotos %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit 'Aplicar Configuração', class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>
